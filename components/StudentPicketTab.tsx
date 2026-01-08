@@ -8,12 +8,10 @@ export const StudentPicketTab: React.FC = () => {
 
   return (
     <div className="pb-20">
-      <div className="sticky top-0 z-30 -mx-4 px-4 py-3 mb-6 bg-[#0f172a]/80 backdrop-blur-lg border-b border-white/10 shadow-sm">
-        <h2 className="text-2xl font-heading font-bold text-white flex items-center gap-3 animate-fade-in">
-          <Sparkles className="text-accent" size={28} />
-          Piket Kelas
-        </h2>
-      </div>
+      <h2 className="sticky top-0 z-30 -mx-4 px-4 py-4 mb-6 bg-[#0f172a]/60 backdrop-blur-md text-2xl font-heading font-bold text-white flex items-center gap-3">
+        <Sparkles className="text-accent" size={28} />
+        Piket Kelas
+      </h2>
 
       <div className="space-y-3">
         {studentPicketData.map((piket, index) => {
@@ -22,7 +20,7 @@ export const StudentPicketTab: React.FC = () => {
           return (
             <div
               key={index}
-              className={`rounded-2xl overflow-hidden transition-all ${
+              className={`rounded-2xl overflow-hidden transition-all duration-150 ${
                 isToday
                   ? 'bg-white/10 border-2 border-amber-400/60 shadow-[0_0_30px_rgba(251,191,36,0.25)]'
                   : 'bg-white/5 border border-white/10'
@@ -68,7 +66,7 @@ export const StudentPicketTab: React.FC = () => {
                   {piket.students.map((student, idx) => (
                     <div
                       key={idx}
-                      className="bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-center hover:bg-white/10 transition-all"
+                      className="bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-center hover:bg-white/10 transition-all duration-150"
                     >
                       <span className="text-slate-200 font-medium">{student}</span>
                     </div>

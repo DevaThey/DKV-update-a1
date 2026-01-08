@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Calendar, Users, Zap, Timer, Sparkles, LayoutGrid, UsersRound, Menu, UserCheck } from 'lucide-react';
 import { HeroSection } from './components/HeroSection';
 import { InfoCard } from './components/InfoCard';
@@ -15,6 +15,11 @@ function App() {
   const [activeTab, setActiveTab] = useState<TabType>('jadwal');
   const [isLogOpen, setIsLogOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [activeTab]);
 
   // Menu Configuration
   const tabs = [
@@ -31,8 +36,8 @@ function App() {
       {/* Animated Background Blobs */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-blob"></div>
-        <div className="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px] animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] animate-blob animation-delay-4000"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px] animate-blob"></div>
+        <div className="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] animate-blob"></div>
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
       </div>
 
@@ -95,16 +100,16 @@ function App() {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as TabType)}
                   className={`
-                    relative flex flex-col items-center justify-center w-full py-2 rounded-xl transition-all duration-300
+                    relative flex flex-col items-center justify-center w-full py-2 rounded-xl transition-all duration-150
                     ${isActive ? 'text-white' : 'text-slate-500 hover:text-slate-300'}
                   `}
                 >
                   {/* Glow Effect behind active icon */}
                   {isActive && (
-                    <div className="absolute inset-0 bg-primary/20 blur-md rounded-xl"></div>
+                    <div className="absolute inset-0 bg-primary/20 blur-md rounded-xl transition-opacity duration-150"></div>
                   )}
 
-                  <div className={`relative z-10 transition-transform duration-300 ${isActive ? '-translate-y-1' : ''}`}>
+                  <div className={`relative z-10 transition-transform duration-150 ${isActive ? '-translate-y-1' : ''}`}>
                     {tab.icon}
                   </div>
 

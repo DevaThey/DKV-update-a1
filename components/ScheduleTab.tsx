@@ -18,7 +18,7 @@ export const ScheduleTab: React.FC<ScheduleTabProps> = () => {
 
   return (
     <div className="pb-20">
-      <h2 className="text-2xl font-heading font-bold text-white mb-6 flex items-center gap-3 animate-fade-in">
+      <h2 className="sticky top-0 z-30 -mx-4 px-4 py-4 mb-6 bg-[#0f172a]/60 backdrop-blur-md text-2xl font-heading font-bold text-white flex items-center gap-3">
         <Calendar className="text-accent" size={28} />
         Jadwal Mingguan
       </h2>
@@ -30,7 +30,7 @@ export const ScheduleTab: React.FC<ScheduleTabProps> = () => {
         const isOpen = openDay === day;
 
         return (
-          <div key={day} className={`relative rounded-3xl overflow-hidden transition-all duration-300 ${isToday ? 'bg-white/10 border-2 border-amber-400/60 shadow-[0_0_30px_rgba(251,191,36,0.25)]' : 'bg-white/5 border border-white/5'}`}>
+          <div key={day} className={`relative rounded-3xl overflow-hidden transition-all duration-150 ${isToday ? 'bg-white/10 border-2 border-amber-400/60 shadow-[0_0_30px_rgba(251,191,36,0.25)]' : 'bg-white/5 border border-white/5'}`}>
 
             {/* Header - Clickable */}
             <button
@@ -59,7 +59,7 @@ export const ScheduleTab: React.FC<ScheduleTabProps> = () => {
 
             {/* List View - Collapsible */}
             {isOpen && (
-              <div className="divide-y divide-white/5 animate-fade-in">
+              <div className="divide-y divide-white/5">
                 {rows.map((row, idx) => {
                   const isBreak = row.subject === 'ISTIRAHAT';
                   if (isBreak) {
@@ -73,12 +73,12 @@ export const ScheduleTab: React.FC<ScheduleTabProps> = () => {
                   }
 
                   return (
-                    <div key={idx} className="p-4 hover:bg-white/10 transition-colors flex gap-4 group">
+                    <div key={idx} className="p-4 hover:bg-white/10 transition-colors duration-150 flex gap-4 group">
                       <div className="flex flex-col items-center pt-1 min-w-[4rem]">
                         <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded-full border border-accent/20">
                           {idx + 1}
                         </span>
-                        <div className="h-full w-px bg-white/5 my-2 group-hover:bg-primary/30 transition-colors"></div>
+                        <div className="h-full w-px bg-white/5 my-2 group-hover:bg-primary/30 transition-colors duration-150"></div>
                       </div>
 
                       <div className="flex-1">
@@ -88,7 +88,7 @@ export const ScheduleTab: React.FC<ScheduleTabProps> = () => {
                           </span>
                         </div>
 
-                        <h4 className="text-lg font-heading font-bold text-cyan-300 group-hover:text-cyan-200 transition-colors mb-1">
+                        <h4 className="text-lg font-heading font-bold text-cyan-300 group-hover:text-cyan-200 transition-colors duration-150 mb-1">
                           {row.subject}
                         </h4>
 
